@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_ujob_domain_Oferta" items="${ofertas}" z="q9DsrjtKFLRRTkmfQ3sRnMN3UB0=">
+        <table:table data="${ofertas}" id="l_es_uca_iw_ujob_domain_Oferta" path="/ofertas" z="HSyRU++LLo7GIzcX1HJYxHKUbd4=">
+            <table:column id="c_es_uca_iw_ujob_domain_Oferta_puesto" property="puesto" z="zMWQIfoRqdAeg82Kmi5WjTiI5HI="/>
+            <table:column id="c_es_uca_iw_ujob_domain_Oferta_tipo_contrato" property="tipo_contrato" z="/cXwSYdDUj0CLLXWQ2ytRC4lQ7w="/>
+            <table:column id="c_es_uca_iw_ujob_domain_Oferta_sueldo" property="sueldo" z="il/pfeL+htaYChqaTIKJjZeYDO0="/>
+            <table:column date="true" dateTimePattern="${oferta_fecha_inicio_date_format}" id="c_es_uca_iw_ujob_domain_Oferta_fecha_inicio" property="fecha_inicio" z="vovbgEmD05gJDRG4KhbaLZV9hF8="/>
+            <table:column id="c_es_uca_iw_ujob_domain_Oferta_perfil" property="perfil" z="dUQRW6ds/Q2Frta2bKkaSsSpWFg="/>
+            <table:column date="true" dateTimePattern="${oferta_fecha_caducidad_date_format}" id="c_es_uca_iw_ujob_domain_Oferta_fecha_caducidad" property="fecha_caducidad" z="AgfmFdtaGZ6OJFyeYFhmqRdNVhg="/>
+        </table:table>
+    </page:list>
+</div>

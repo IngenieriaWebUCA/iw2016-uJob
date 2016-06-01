@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_iw_ujob_domain_Oferta" object="${oferta}" path="/ofertas" z="user-managed">
+        <field:display field="puesto" id="s_es_uca_iw_ujob_domain_Oferta_puesto" object="${oferta}" z="FcX+vF4vow+yVHCnJ6butIy4wnA="/>
+        <field:display field="tipo_contrato" id="s_es_uca_iw_ujob_domain_Oferta_tipo_contrato" object="${oferta}" z="BcziwYNknY5vejo6sQGebvj7lAw="/>
+        <field:display field="sueldo" id="s_es_uca_iw_ujob_domain_Oferta_sueldo" object="${oferta}" z="51hNROVtEfDmZuwo5Bdfi4X1mBg="/>
+        <field:display date="true" dateTimePattern="${oferta_fecha_inicio_date_format}" field="fecha_inicio" id="s_es_uca_iw_ujob_domain_Oferta_fecha_inicio" object="${oferta}" z="So1pKbrFyEpKIQTt63zqHZUVl08="/>
+        <field:display field="perfil" id="s_es_uca_iw_ujob_domain_Oferta_perfil" object="${oferta}" z="myYPLuFeFVzgf9gge5rCo5pXQoI="/>
+        <field:display date="true" dateTimePattern="${oferta_fecha_caducidad_date_format}" field="fecha_caducidad" id="s_es_uca_iw_ujob_domain_Oferta_fecha_caducidad" object="${oferta}" z="bCIiHAaKpO468NoQf0E5gUJTwTg="/>
+        <field:display field="empresa" id="s_es_uca_iw_ujob_domain_Oferta_empresa" object="${oferta}" z="X0xvdjmSfgRjs+rAuTk6Hw6U+b4="/>
+        <field:display field="estado" id="s_es_uca_iw_ujob_domain_Oferta_estado" object="${oferta}" z="CE0V2+t2l9yE5CmxCJ31gV6wPr0="/>
+        <field:display field="N_vacantes" id="s_es_uca_iw_ujob_domain_Oferta_n_vacantes" object="${oferta}" z="user-managed"/>
+        <field:display field="localizacion" id="s_es_uca_iw_ujob_domain_Oferta_localizacion" object="${oferta}" z="O+wBT1lmNqoUOMRYAjkvbsTu1nM="/>
+    
+    <form action="../inscripcions/anadirInscripcion">
+	    <input name="oferta_id" type="hidden" value="${oferta.id}"/>
+	    <input name="usuario_nombre" type="hidden" value="${pageContext['request'].userPrincipal.name}"/>
+	    <br/>
+	    <center>
+	    <input type="submit" value="Inscribirse en la oferta"/>
+		</center>
+	</form>
+	
+    </page:show>
+</div>

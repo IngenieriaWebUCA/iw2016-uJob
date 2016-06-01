@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:sec="http://www.springframework.org/security/tags" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+	<page:show id="ps_es_uca_iw_ujob_domain_Demandante" object="${demandante}" path="/demandantes" z="mG69+k1Sk4pX2ZjVKWpfRRgUVRA=">
+        <field:display field="nombre" id="s_es_uca_iw_ujob_domain_Demandante_nombre" object="${demandante}" z="Re09pE7Kg+Whlz8xHN1pVAc7Yk8="/>
+        <field:display field="sexo" id="s_es_uca_iw_ujob_domain_Demandante_sexo" object="${demandante}" z="jWD4TZlRCVmYZpxYgWx/09nI9Ws="/>
+        <field:display date="true" dateTimePattern="${demandante_fecha_nacimiento_date_format}" field="fecha_nacimiento" id="s_es_uca_iw_ujob_domain_Demandante_fecha_nacimiento" object="${demandante}" z="rB/Xevg245HIRjBdym4Gk/M/9io="/>
+        <field:display field="direccion" id="s_es_uca_iw_ujob_domain_Demandante_direccion" object="${demandante}" z="gKIl5ZvQIXGiPosVQKZXEIfWjNw="/>
+        <field:display field="email" id="s_es_uca_iw_ujob_domain_Demandante_email" object="${demandante}" z="2K77vOvXbuh4xAuIx8vbKskbb48="/>
+        <field:display field="telefono" id="s_es_uca_iw_ujob_domain_Demandante_telefono" object="${demandante}" z="rD+4NBR2es4QuxKdWT1asvOq4IM="/>
+        <field:display field="experiencia" id="s_es_uca_iw_ujob_domain_Demandante_experiencia" object="${demandante}" z="WANpdXzzq9uPMcUcZ/DnRpUepwM="/>
+        <field:display field="usuario" id="s_es_uca_iw_ujob_domain_Demandante_usuario" object="${demandante}" z="5vFZYLMvU5Uk9wYJ2+eUCKnnqSg="/>
+    </page:show>
+</div>

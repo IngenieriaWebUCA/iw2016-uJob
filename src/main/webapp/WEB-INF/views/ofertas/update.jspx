@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_es_uca_iw_ujob_domain_Oferta" modelAttribute="oferta" path="/ofertas" versionField="Version" z="+0bRqYsduNjwpOWDhcBSVKeUzeE=">
+        <field:textarea field="puesto" id="c_es_uca_iw_ujob_domain_Oferta_puesto" required="true" z="FuXSdv4x9cBu3qHlEt4aikD5IFM="/>
+        <field:textarea field="tipo_contrato" id="c_es_uca_iw_ujob_domain_Oferta_tipo_contrato" required="true" z="g0aEVV52RPWawtrUXwa542jQmLw="/>
+        <field:input field="sueldo" id="c_es_uca_iw_ujob_domain_Oferta_sueldo" required="true" validationMessageCode="field_invalid_number" z="kzaGTOgk1h2Hu7eiZOQ0Gey9xk8="/>
+        <field:datetime dateTimePattern="${oferta_fecha_inicio_date_format}" field="fecha_inicio" id="c_es_uca_iw_ujob_domain_Oferta_fecha_inicio" required="true" z="JdukCySLDLRJjM7LskxUGQyDVRA="/>
+        <field:textarea field="perfil" id="c_es_uca_iw_ujob_domain_Oferta_perfil" required="true" z="/ch1+evsL3k77AJmSggFvRvwZCA="/>
+        <field:datetime dateTimePattern="${oferta_fecha_caducidad_date_format}" field="fecha_caducidad" id="c_es_uca_iw_ujob_domain_Oferta_fecha_caducidad" required="true" z="HyxAoS3utcWoXUuago42FpgyXQk="/>
+        <field:input field="n_vacantes" id="c_es_uca_iw_ujob_domain_Oferta_n_vacantes" required="true" validationMessageCode="field_invalid_integer" z="B03gnfYNd+aSMGl6tWqdN1c4/8w="/>
+        <field:select field="estado" id="c_es_uca_iw_ujob_domain_Oferta_estado" items="${estadoofertas}" path="estadoofertas" required="true" z="hmHjXyh/2XKrqusLYxQ/N2b/kQg="/>
+        <field:select field="empresa" id="c_es_uca_iw_ujob_domain_Oferta_empresa" itemValue="cif" items="${empresas}" path="/empresas" z="ogEHfTcRXxGHj9uHV4ccNbMes/A="/>
+        <field:select field="localizacion" id="c_es_uca_iw_ujob_domain_Oferta_localizacion" itemValue="id" items="${localizacions}" path="/localizacions" z="A/8b7saPJyv2YNG1dz6E644L/hI="/>
+    </form:update>
+</div>

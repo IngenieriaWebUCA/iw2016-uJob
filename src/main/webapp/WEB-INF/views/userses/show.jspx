@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_iw_ujob_domain_Users" object="${users}" path="/userses" z="dwdsyAbKdgE9iJ3m9lpG3InoMvo=">
+        <field:display field="password" id="s_es_uca_iw_ujob_domain_Users_password" object="${users}" z="wjUxTVRypb7yT8RzuwD+YnGvNmA="/>
+        <field:display field="email" id="s_es_uca_iw_ujob_domain_Users_email" object="${users}" z="eV4z3ywEhKF9K10JhzASIb0vcs0="/>
+        <field:display field="name" id="s_es_uca_iw_ujob_domain_Users_name" object="${users}" z="tlK5rPnMQlSmE4AzDvbIhfhDUZk="/>
+        <field:display field="enable" id="s_es_uca_iw_ujob_domain_Users_enable" object="${users}" z="dS/0chCeKc6bANec2lwDNrEuZYg="/>
+        <field:display field="userRole" id="s_es_uca_iw_ujob_domain_Users_userRole" object="${users}" z="MN28ZnWEVFwURwuDiZ1Z2yFaS0A="/>
+        <field:display field="username" id="s_es_uca_iw_ujob_domain_Users_username" object="${users}" z="ROAJ1KXZajqqr2o3DYgt4HaArGk="/>
+        <field:display field="empresa" id="s_es_uca_iw_ujob_domain_Users_empresa" object="${users}" z="uidky51JGbyxk4MJQ5clY8W4M+w="/>
+    </page:show>
+</div>

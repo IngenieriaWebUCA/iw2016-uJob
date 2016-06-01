@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+<persistence-unit name="persistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <!-- value="create" to build a new database on each run; value="update" to modify an existing database; value="create-drop" means the same as "create" but also drops tables when Hibernate closes; value="validate" makes no changes to the database -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy"/>
+            <property name="hibernate.connection.charSet" value="UTF-8"/>
+            <property name="show_sql" value= "true"/>
+			
+			<property name="hibernate.c3p0.min_size" value="5" />				 <!-- Minimo numero de conexiones en el pool -->
+			<property name="hibernate.c3p0.max_size" value="20" /> 				 <!-- Maximo numero de conexiones en el pool -->
+			<property name="hibernate.c3p0.timeout" value="300" />     			 <!-- Tiempo de espera antes de cerrar el pool -->
+			<property name="hibernate.c3p0.max_statements" value="50" /> 		 <!-- Máximo numero de instrucciones -->
+ 			<property name="hibernate.c3p0.idle_test_period" value="3000" /> 	 <!-- Tiempo ocioso -->
+ 			<property name="hibernate.max_fetch_depth" value="3" /> 			 <!-- Niveles de profundidad soportados -->
+ 			<property name="hibernate.default_batch_fetch_size" value="16" />    <!-- Eliminar problema N+1 consultas -->
+        </properties>
+    </persistence-unit>
+</persistence>

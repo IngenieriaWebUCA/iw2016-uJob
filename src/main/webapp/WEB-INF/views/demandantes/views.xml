@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="demandantes/list">
+        <put-attribute name="body" value="/WEB-INF/views/demandantes/list.jspx"/>
+    </definition>
+<definition extends="default" name="demandantes/show">
+        <put-attribute name="body" value="/WEB-INF/views/demandantes/show.jspx"/>
+    </definition>
+<definition extends="default" name="demandantes/create">
+        <put-attribute name="body" value="/WEB-INF/views/demandantes/create.jspx"/>
+    </definition>
+<definition extends="default" name="demandantes/update">
+        <put-attribute name="body" value="/WEB-INF/views/demandantes/update.jspx"/>
+    </definition>    
+	<definition extends="default" name="demandantes/findDemandantesBySexoLike">
+        <put-attribute name="body" value="/WEB-INF/views/demandantes/findDemandantesBySexoLike.jspx"/>
+    </definition>
+<definition extends="default" name="demandantes/findDemandantesByExperienciaLike">
+        <put-attribute name="body" value="/WEB-INF/views/demandantes/findDemandantesByExperienciaLike.jspx"/>
+    </definition>
+<definition extends="default" name="demandantes/findDemandantesByExperienciaLikeOrTitulaciones">
+        <put-attribute name="body" value="/WEB-INF/views/demandantes/findDemandantesByExperienciaLikeOrTitulaciones.jspx"/>
+    </definition>
+<definition extends="default" name="demandantes/findDemandantesByTitulaciones">
+        <put-attribute name="body" value="/WEB-INF/views/demandantes/findDemandantesByTitulaciones.jspx"/>
+    </definition>
+<definition extends="default" name="demandantes/findDemandantesByExperienciaLikeAndTitulaciones">
+        <put-attribute name="body" value="/WEB-INF/views/demandantes/findDemandantesByExperienciaLikeAndTitulaciones.jspx"/>
+    </definition>
+</tiles-definitions>

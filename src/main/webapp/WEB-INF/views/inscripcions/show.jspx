@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_es_uca_iw_ujob_domain_Inscripcion" object="${inscripcion}" path="/inscripcions" z="qsKFZQrzLS2tbLdSdMh2xqIcOg0=">
+        <field:display field="estado" id="s_es_uca_iw_ujob_domain_Inscripcion_estado" object="${inscripcion}" z="ZnrBKneua15mmxaXV590cGsSPdY="/>
+        <field:display date="true" dateTimePattern="${inscripcion_fecha_inscripcion_date_format}" field="fecha_inscripcion" id="s_es_uca_iw_ujob_domain_Inscripcion_fecha_inscripcion" object="${inscripcion}" z="wX7fCNFh2Gai5P0TYMmz9kOgLD8="/>
+        <field:display field="oferta" id="s_es_uca_iw_ujob_domain_Inscripcion_oferta" object="${inscripcion}" z="XukAMxMPTFtZZwR/xg4/EG8s/VI="/>
+        <field:display field="demandante" id="s_es_uca_iw_ujob_domain_Inscripcion_demandante" object="${inscripcion}" z="8haDxcwSizoLnWIJo0JWkS7YHqU="/>
+    </page:show>
+</div>

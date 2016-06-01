@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/custom/" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_ujob_domain_Demandante" items="${demandantes}" z="han1NCXksXkU9aCDnU2Md+6d9SM=">
+        <table:table data="${demandantes}" id="l_es_uca_iw_ujob_domain_Demandante" path="/demandantes" typeIdFieldName="dni" z="9AFaeXeetoljoxjhNG4j/rszFzo=">
+            <table:column id="c_es_uca_iw_ujob_domain_Demandante_nombre" property="nombre" z="user-managed"/>
+            <table:column id="c_es_uca_iw_ujob_domain_Demandante_sexo" property="sexo" z="AsHbGkBndYUVU11h0Yw0NuNRamE="/>
+            <table:column date="true" dateTimePattern="${demandante_fecha_nacimiento_date_format}" id="c_es_uca_iw_ujob_domain_Demandante_fecha_nacimiento" property="fecha_nacimiento" z="SaxVUfwvSMvLosocU1e1kriD944="/>
+            <table:column id="c_es_uca_iw_ujob_domain_Demandante_direccion" property="direccion" z="GrsZJxHMAbrrXT4JpY1qM91CSYE="/>
+            <table:column id="c_es_uca_iw_ujob_domain_Demandante_email" property="email" z="ZCrLhNo3I849reb0OHe2QQ3Aw8c="/>
+            <table:column id="c_es_uca_iw_ujob_domain_Demandante_telefono" property="telefono" z="RYLWxWVEJspstZLmrVwXcKgKyGI="/>
+        </table:table>
+    </page:list>
+</div>

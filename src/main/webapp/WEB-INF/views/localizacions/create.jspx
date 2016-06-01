@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_es_uca_iw_ujob_domain_Localizacion" modelAttribute="localizacion" path="/localizacions" render="${empty dependencies}" z="RKeT5wYO2fCKwcTe7DeijTztFXU=">
+        <field:input field="nombre" id="c_es_uca_iw_ujob_domain_Localizacion_nombre" required="true" z="J9Alyuw8tY7U0pgQ9obnH4EeLRc="/>
+        <field:select field="empresa" id="c_es_uca_iw_ujob_domain_Localizacion_empresa" itemValue="cif" items="${empresas}" path="/empresas" z="Ezfv9rmRcYEiFGdwRxOykoCi/qQ="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_es_uca_iw_ujob_domain_Localizacion" render="${not empty dependencies}" z="b2unpqa7oGnXzsbJCWLi1Rs8H8w="/>
+</div>

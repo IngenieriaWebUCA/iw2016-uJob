@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_es_uca_iw_ujob_domain_Users" items="${userses}" z="ZWBL00kqQV0bhwMEC6seNrS+/44=">
+        <table:table data="${userses}" id="l_es_uca_iw_ujob_domain_Users" path="/userses" typeIdFieldName="dni" z="HGciu+SgnTUWJqQXV0yjC7EKT7E=">
+            <table:column id="c_es_uca_iw_ujob_domain_Users_username" property="username" z="+GXjaGyu5qreKzFv6B977lex3ms="/>
+            <table:column id="c_es_uca_iw_ujob_domain_Users_password" property="password" z="HZcXI30Z3EJWDMtXuslVc1d7qD4="/>
+            <table:column id="c_es_uca_iw_ujob_domain_Users_email" property="email" z="9HHGEuK+/kcufF7Mvs87zVNd7QU="/>
+            <table:column id="c_es_uca_iw_ujob_domain_Users_name" property="name" z="VoqNQSE62BJ1moD+3v/8OMxqCJw="/>
+            <table:column id="c_es_uca_iw_ujob_domain_Users_enable" property="enable" z="tvfoBTm7jWgKYHQI2tDX6ddNxg8="/>
+            <table:column id="c_es_uca_iw_ujob_domain_Users_userRole" property="userRole" z="Wd+s8pNeNIHiq4CO6J6h69qTmH8="/>
+        </table:table>
+    </page:list>
+</div>

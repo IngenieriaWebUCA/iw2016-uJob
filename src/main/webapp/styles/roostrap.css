@@ -1,0 +1,21 @@
+.utilbox {width: 48px;}
+
+body{ 
+	margin-top: 50px;
+	padding-top: 62px;
+	background-color: #f8f8f8;
+}
+
+form{
+	margin-bottom: 0px
+};
+
+.banner_header{
+	height: 100%;
+	width: 100%;
+}
+
+header {
+    position: absolute;
+	min-height: 100%;
+}

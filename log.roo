@@ -1,0 +1,238 @@
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-03 12:29:23
+project --topLevelPackage es.uca.iw.ujob --projectName iw2016-ujob --java 7 --packaging JAR
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-03 12:29:24
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-03 12:29:25
+jpa setup --provider HIBERNATE --database MYSQL --databaseName iw2016ujob
+entity jpa --class ~.domain.Demandante --testAutomatically
+field string --fieldName sexo --notNull --sizeMin 1 
+field string --fieldName fecha_nacimiento --notNull --sizeMin 10 --sizeMax 10
+field string --fieldName direccion --notNull --sizeMin 1 --sizeMax 255
+field string --fieldName email --notNull --sizeMax 255
+field string --fieldName telefono --notNull --sizeMin 9 --sizeMax 9
+entity jpa --class ~.domain.Empresa --testAutomatically
+field string --fieldName cif --notNull --unique --sizeMin 9 --sizeMax 9
+field string --fieldName nombre --notNull --unique --sizeMin 1 --sizeMax 255
+field string --fieldName email --notNull --sizeMax 255
+field number --fieldName n_empleados --type java.lang.Integer
+field string --fieldName otros
+entity jpa --class ~.domain.Localizacion --testAutomatically
+field number --fieldName id --type java.lang.Integer --unique --notNull --column id
+field string --fieldName nombre --unique --column nombre --notNull
+entity jpa --class ~.domain.Oferta --testAutomatically
+field number --fieldName id --type java.lang.Integer --unique --notNull --column id
+field string --fieldName puesto --notNull --sizeMin 1 --sizeMax 255 --column puesto
+field string --fieldName tipo_contrato --notNull --sizeMin 1 --sizeMax 50 --column tipo_contrato
+field number --fieldName sueldo --type java.lang.Float --notNull --column sueldo
+field string --fieldName fecha_inicio --notNull --sizeMin 10 --sizeMax 10 --column fecha_inicio
+field string --fieldName perfil --notNull --sizeMax 255 --column perfil
+field string --fieldName fecha_caducidad --notNull --sizeMin 10 --sizeMax 10 --column fecha_caducidad
+field string --fieldName estado --notNull --column estado
+entity jpa --class ~.domain.Curriculum --testAutomatically
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-03 16:45:08
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-03 18:11:14
+hint field
+hint field
+hint
+hint fields
+hint relationships
+entity jpa --class ~.domain.Experiencia --testAutomatically
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-03 18:56:11
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-06 18:55:10
+entity jpa --class ~.domain.Inscripcion --testAutomatically
+web mvc setup
+web mvc all --package ~.web
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-06 22:49:11
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-08 00:05:01
+entity jpa --class ~.domain.Prueba --testAutomatically
+web mvc all --package ~.web
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-08 01:14:39
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-08 01:14:55
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-08 01:16:46
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-08 01:16:55
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-08 01:17:37
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-08 01:17:46
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-08 01:30:13
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-11 19:17:02
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-11 21:29:33
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-12 10:11:38
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log opened at 2016-05-13 13:48:59
+focus --class ~.domain.Demandante
+find list
+web mvc finder all
+finder add --finderName findDemandantesBySexoLike
+web mvc finder all
+// Spring Roo 1.3.2.RELEASE [rev d18aef8] log closed at 2016-05-13 13:54:19
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-17 18:31:20
+focus --class ~.domain.Demandante
+field string --fieldName nombre --notNull --column nombre
+finder list
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-17 18:50:28
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-17 18:56:17
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-17 23:26:48
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-17 23:27:18
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-18 08:19:07
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-18 14:15:42
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-18 14:17:48
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-18 14:23:55
+entity jpa --class ~.domain.Users --testAutomatically
+field string name --sizeMin 6 --notNull --unique
+field string password --sizeMin 3 --notNull
+// [failed] field reference --fieldName user_role --type ~.domain.UserRole
+entity jpa --class ~.domain.UserRole --testAutomatically
+focus --class ~.domain.Users
+field reference --fieldName user_role --type ~.domain.UserRole
+web mvc scaffold --class ~.web.UsersController
+focus --class ~.domain.UserRole
+web mvc scaffold --class ~.web.UserRoleController
+focus --class ~.domain.Demandante
+// [failed] field reference --fieldName user --type ~.domain.UserRole
+field reference --fieldName users --type ~.domain.Users
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-18 18:19:05
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-18 18:20:30
+entity jpa --class ~.domain.Users --testAutomatically
+entity jpa --class ~.domain.UserRole --testAutomatically
+web mvc scaffold --class ~.web.UsersController
+web mvc scaffold --class ~.web.UserRoleController
+web mvc scaffold --class ~.web.DemandanteController
+web mvc scaffold --class ~.web.DemandanteController
+web mvc scaffold --class ~.web.DemandanteController
+web mvc scaffold --class ~.web.UsersController
+web mvc scaffold --class ~.web.UsersController
+web mvc scaffold --class ~.web.UsersController
+web mvc scaffold --class ~.web.UsersController
+web mvc scaffold --class ~.web.UserRoleController
+focus --class ~.domain.Users
+web mvc scaffold --class ~.web.UsersController
+// [failed] focus --class ~.domain.UserRoles
+focus --class ~.domain.UserRole
+web mvc scaffold --class ~.web.UserRoleController
+security setup
+focus --class ~.domain.Users
+field reference --fieldName empresa --type ~.domain.Empresa
+web mvc scaffold --class ~.web.UsersController
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-20 11:45:06
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-20 12:12:17
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-22 12:11:10
+entity jpa --class ~.domain.Titulacion
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-22 13:46:19
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-22 14:00:07
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-22 22:11:40
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-23 11:34:53
+download status
+download accept terms of use
+focus --class ~.domain.Demandante
+finder list
+finder list --depth 2
+finder add --finderName findDemandantesByExperienciaLikeOrTitulaciones
+web mvc find all
+web mvc finder all 
+finder list
+finder add --finderName findDemandantesByExperienciaLike
+finder add --finderName findDemandantesByTitulaciones
+web mvc find all
+web mvc finder all
+find add findDemandantesByExperienciaLikeOrTitulaciones
+finder add --finderName findDemandantesByExperienciaLikeOrTitulaciones
+web mvc find all
+web mvc all --package ~.domain
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-23 18:46:18
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-24 08:38:46
+focus --class ~.domain.Oferta
+// [failed] finder list --depth 6
+finder list
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-24 08:45:05
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-24 08:57:07
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-24 13:02:16
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-25 11:11:17
+focus --class ~.domain.Empresa
+finder add --finderName findEmpresasByNombreLike
+web mvc find all
+download accept terms of use
+focus --class ~.domain.Demandante
+finder add --finderName findDemandantesByExperienciaLikeAndTitulaciones
+web mvc find all
+web mvc find all
+web mvc find all
+focus --class ~.domain.Oferta
+finder add --finderName findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizaciones
+web mvc find all
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-25 11:30:12
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-25 11:30:27
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-25 12:21:14
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-26 15:04:33
+web mvc find all
+focus --class ~.domain.Oferta
+finder list
+finder add --finderName findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion
+web mvc find all
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-26 18:07:40
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-27 19:58:40
+download accept terms of use
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-27 20:00:48
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-27 20:02:28
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-27 20:09:32
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-27 20:18:24
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-28 14:51:49
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-28 15:08:56
+// [failed] web mvc language --code en
+web mvc language --code en
+web mvc install language en
+web mvc install language --code en
+web mvc language --code es
+// [failed] web mvc install language --code es
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-28 15:45:42
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-28 15:51:56
+web mvc language --code de 
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-28 16:21:38
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-28 16:40:57
+web mvc install language --code es
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-28 16:46:22
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-30 11:33:54
+email sender setup --hostServer smtp.gmail.com --username rubencitorivas@gmail.com --password thisisnotmypass123 --port 587  --protocol SMTP
+field email template --class ~.web.OfertaController
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-30 15:06:43
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-31 18:17:43
+web mvc json all
+web mvc json all
+json add --class ~.domain.Curriculum
+json add --class ~.domain.Demandante
+json add --class ~.domain.Empresa
+json add --class ~.domain.Experiencia
+json add --class ~.domain.Inscripcion
+json add --class ~.domain.Localizacion
+json add --class ~.domain.Oferta
+json add --class ~.domain.Titulacion
+json add --class ~.domain.Users
+json add --class ~.domain.UserRole
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-05-31 20:16:01
+test mock --entity ~.domain.Curriculum
+test mock --entity ~.domain.Demandante
+test mock --entity ~.domain.Empresa
+test mock --entity ~.domain.Inscripcion
+test mock --entity ~.domain.Localizacion
+test mock --entity ~.domain.Oferta
+test mock --entity ~.domain.Titulacion
+test mock --entity ~.domain.UserRole
+test mock --entity ~.domain.Users
+test integration --entity ~.domain.Curriculum
+focus --class Curriculum
+test integration --entity ~.domain.Curriculum
+test integration --entity ~.domain.Demandante
+test integration --entity ~.domain.Empresa
+test integration --entity ~.domain.Inscripcion
+test integration --entity ~.domain.Localizacion
+test integration --entity ~.domain.Oferta
+test integration --entity ~.domain.Titulacion
+test integration --entity ~.domain.UserRole
+test integration --entity ~.domain.Users
+// [failed] selenium test --controller ~.domain.Curriculum
+// [failed] selenium test --controller ~.domain.web.CurriculumController
+selenium test --controller ~.web.CurriculumController
+selenium test --controller ~.web.DemandanteController
+selenium test --controller ~.web.EmpresaController
+selenium test --controller ~.web.InscripcionController
+selenium test --controller ~.web.LocalizacionController
+selenium test --controller ~.web.OfertaController
+selenium test --controller ~.web.UserRoleController
+selenium test --controller ~.web.UsersController
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-05-31 21:36:56

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <h1>Rellene los campos siguientes</h1>
+    <br/>
+    <form:form action="ofertas/anadirOferta">
+                Puesto:
+                	<input name="oferta_puesto" type="text"/>
+        <br/>
+        <br/>
+                Tipo de contrato:
+                	<input name="oferta_tipo" type="text"/>
+        <br/>
+        <br/>
+                Fecha de inicio:
+                	<input name="oferta_fini" type="date"/>
+        <br/>
+        <br/>
+                Fecha de caducidad:
+                	<input name="oferta_fcad" type="date"/>
+        <br/>
+        <br/>
+                Sueldo:
+                	<input name="oferta_sueldo" type="number"/>
+        <br/>
+        <br/>
+                Numero de vacantes:
+                	<input name="oferta_nvacantes" type="number"/>
+        <br/>
+        <br/>
+                Oferta:
+                <select name="oferta_estado">
+            <option value="Resuelta">Resuelta</option>
+            <option value="En espera">En espera</option>
+            <option value="Activa">Activa</option>
+            <option value="Detenida">Detenida</option>
+            <option value="Cancelada">Cancelada</option>
+            <option value="En tramite">En tramite</option>
+        </select>
+        <br/>
+        <br/>
+        <br/>
+                Perfil:
+                	<input name="oferta_perfil" type="text"/>
+        <br/>
+        <br/>
+        <input name="usuario_nombre" type="hidden" value="${pageContext['request'].userPrincipal.name}"/>
+        <br/>
+        <input type="submit" value="Añadir oferta"/>
+    </form:form>
+</div>
