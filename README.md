@@ -61,6 +61,7 @@ Los enlaces a los entregables son los siguientes:
  - Acta 1: [Acta](https://www.keepandshare.com/doc17/8181/acta1-pdf-595k?da=y "Enlace")
  - Acta 2: [Acta](https://www.keepandshare.com/doc17/8178/acta2-pdf-661k?da=y "Enlace")
  - Acta 3: [Acta](https://www.keepandshare.com/doc17/8179/acta3-pdf-660k?da=y "Enlace")
+ - Acta 4: [Acta](https://www.keepandshare.com/doc17/8229/acta4-pdf-597k?da=y "Enlace")
 
 ## Planificación temporal del proyecto
 
