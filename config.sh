@@ -1,5 +1,4 @@
 #!/bin/sh
-git clone https://github.com/IngenieriaWebUCA/iw2016-uJob.git
 cd iw2016-uJob
 sudo chmod 777 ./config.sh
 sudo chmod 777 ./inicio.sh
