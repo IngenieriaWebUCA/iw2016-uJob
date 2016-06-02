@@ -20,6 +20,11 @@ SET time_zone = "+00:00";
 -- Base de datos: `iw2016ujob`
 --
 
+-- Creacion de la base de datos si no existe
+CREATE DATABASE IF NOT EXISTS iw2016ujob;
+--- Seleccionar base de datos
+USE iw2016ujob;
+
 -- --------------------------------------------------------
 
 --
