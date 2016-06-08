@@ -21,6 +21,17 @@
        <intercept-url pattern="\A/curriculum.*\Z" access="hasAnyRole('Admin','Demandante')" />
           
     </http>
+    <beans:bean id="authenticationSuccessHandler"
+	class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+	<!-- After login, return to the last visited page -->
+	<beans:property name="useReferer" value="true" />
+	</beans:bean>
+
+	<beans:bean id="authenticationSuccessHandlerWithoutReferer"
+		class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<!-- After login, stay to the same page -->
+		<beans:property name="useReferer" value="false" />
+	</beans:bean>
     <!-- Configure Authentication mechanism -->
     <authentication-manager alias="authenticationManager">
         <!-- SHA-256 values can be produced using 'echo -n your_desired_password | sha256sum' (using normal *nix environments) -->
