@@ -25,4 +25,7 @@
 <definition extends="default" name="ofertas/update">
         <put-attribute name="body" value="/WEB-INF/views/ofertas/update.jspx"/>
     </definition>
+<definition extends="default" name="ofertas/findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion">
+        <put-attribute name="body" value="/WEB-INF/views/ofertas/findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion.jspx"/>
+    </definition>
 </tiles-definitions>

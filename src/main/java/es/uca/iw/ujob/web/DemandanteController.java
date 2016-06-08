@@ -1,5 +1,7 @@
 package es.uca.iw.ujob.web;
 import es.uca.iw.ujob.domain.Demandante;
+import es.uca.iw.ujob.domain.Inscripcion;
+import es.uca.iw.ujob.domain.Oferta;
 import es.uca.iw.ujob.domain.Titulacion;
 import es.uca.iw.ujob.domain.UserRole;
 import es.uca.iw.ujob.domain.Users;
@@ -45,13 +47,33 @@ public class DemandanteController {
     	List<String[]> dependencies = new ArrayList<String[]>();
     	Users usuario = Users.buscarUsuarioNombre(nombre);
     	Collection<Users> usuarios = Users.findUsers2(usuario.getDni());
-    	uiModel.addAttribute("demandante", Demandante.findDemandante(usuario.getDni()));
-    	uiModel.addAttribute("usuario", usuarios);
-    	uiModel.addAttribute("dependencies",dependencies);
-    	return "demandantes/update";
+    	if(Demandante.findDemandante(usuario.getDni()) == null)
+    		return "redirect:/demandantes?form";
+    	else{
+	    	uiModel.addAttribute("demandante", Demandante.findDemandante(usuario.getDni()));
+	    	uiModel.addAttribute("usuario", usuarios);
+	    	uiModel.addAttribute("dependencies",dependencies);
+	    	return "demandantes/update";
+    	}
     }
     
-
+    @RequestMapping(value = "/mostrarOfertas")
+    public String mostrarOfertas(@RequestParam("usuario_nombre") String nombre, Model uiModel) {
+    	Users usuario = Users.buscarUsuarioNombre(nombre);
+    	uiModel.addAttribute("ofertas", Oferta.findAllOfertasEmpresa(usuario.getEmpresa().getCif()));
+    	System.out.println(Oferta.findAllOfertasEmpresa(usuario.getEmpresa().getCif()));
+        addDateTimeFormatPatterns(uiModel);
+        return "demandantes/mostrarOfertas";
+    }
+    
+    @RequestMapping(value = "/buscarDemandanteOferta")
+    public String buscarDemandanteOferta(@RequestParam("oferta") Oferta oferta, Model uiModel) {
+    	String perfil = oferta.getPerfil();
+    	Titulacion miTitulacion = Titulacion.findTitulacionNombre(perfil);
+    	Set<Titulacion> tit = new HashSet<Titulacion>();
+    	tit.add(miTitulacion);
+    	return "redirect:/demandantes?find=ByExperienciaLikeAndTitulaciones&experiencia=&titulaciones="+miTitulacion.getId();
+    }
 
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid Demandante demandante, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {

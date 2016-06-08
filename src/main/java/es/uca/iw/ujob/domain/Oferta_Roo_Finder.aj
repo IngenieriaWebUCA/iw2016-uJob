@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 
 privileged aspect Oferta_Roo_Finder {
     
-    public static Long Oferta.countFindOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion(String puesto, String tipo_contrato, Float sueldo, String perfil, Localizacion localizacion) {
+    public static Long Oferta.countFindOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion(String puesto, String tipo_contrato, Float minSueldo, Float maxSueldo, String perfil, Localizacion localizacion) {
         if (puesto == null || puesto.length() == 0) throw new IllegalArgumentException("The puesto argument is required");
         puesto = puesto.replace('*', '%');
         if (puesto.charAt(0) != '%') {
@@ -27,7 +27,8 @@ privileged aspect Oferta_Roo_Finder {
         if (tipo_contrato.charAt(tipo_contrato.length() - 1) != '%') {
             tipo_contrato = tipo_contrato + "%";
         }
-        if (sueldo == null) throw new IllegalArgumentException("The sueldo argument is required");
+        if (minSueldo == null) throw new IllegalArgumentException("The minSueldo argument is required");
+        if (maxSueldo == null) throw new IllegalArgumentException("The maxSueldo argument is required");
         if (perfil == null || perfil.length() == 0) throw new IllegalArgumentException("The perfil argument is required");
         perfil = perfil.replace('*', '%');
         if (perfil.charAt(0) != '%') {
@@ -38,16 +39,17 @@ privileged aspect Oferta_Roo_Finder {
         }
         if (localizacion == null) throw new IllegalArgumentException("The localizacion argument is required");
         EntityManager em = Oferta.entityManager();
-        TypedQuery q = em.createQuery("SELECT COUNT(o) FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND o.sueldo >= :sueldo  AND LOWER(o.perfil) LIKE LOWER(:perfil)  AND o.localizacion = :localizacion", Long.class);
+        TypedQuery q = em.createQuery("SELECT COUNT(o) FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND o.sueldo BETWEEN :minSueldo AND :maxSueldo  AND LOWER(o.perfil) LIKE LOWER(:perfil)  AND o.localizacion = :localizacion", Long.class);
         q.setParameter("puesto", puesto);
         q.setParameter("tipo_contrato", tipo_contrato);
-        q.setParameter("sueldo", sueldo);
+        q.setParameter("minSueldo", minSueldo);
+        q.setParameter("maxSueldo", maxSueldo);
         q.setParameter("perfil", perfil);
         q.setParameter("localizacion", localizacion);
         return ((Long) q.getSingleResult());
     }
     
-    public static TypedQuery<Oferta> Oferta.findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion(String puesto, String tipo_contrato, Float sueldo, String perfil, Localizacion localizacion) {
+    public static TypedQuery<Oferta> Oferta.findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion(String puesto, String tipo_contrato, Float minSueldo, Float maxSueldo, String perfil, Localizacion localizacion) {
         if (puesto == null || puesto.length() == 0) throw new IllegalArgumentException("The puesto argument is required");
         puesto = puesto.replace('*', '%');
         if (puesto.charAt(0) != '%') {
@@ -64,7 +66,8 @@ privileged aspect Oferta_Roo_Finder {
         if (tipo_contrato.charAt(tipo_contrato.length() - 1) != '%') {
             tipo_contrato = tipo_contrato + "%";
         }
-        if (sueldo == null) throw new IllegalArgumentException("The sueldo argument is required");
+        if (minSueldo == null) throw new IllegalArgumentException("The minSueldo argument is required");
+        if (maxSueldo == null) throw new IllegalArgumentException("The maxSueldo argument is required");
         if (perfil == null || perfil.length() == 0) throw new IllegalArgumentException("The perfil argument is required");
         perfil = perfil.replace('*', '%');
         if (perfil.charAt(0) != '%') {
@@ -75,10 +78,11 @@ privileged aspect Oferta_Roo_Finder {
         }
         if (localizacion == null) throw new IllegalArgumentException("The localizacion argument is required");
         EntityManager em = Oferta.entityManager();
-        TypedQuery<Oferta> q = em.createQuery("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND o.sueldo >= :sueldo  AND LOWER(o.perfil) LIKE LOWER(:perfil)  AND o.localizacion = :localizacion", Oferta.class);
+        TypedQuery<Oferta> q = em.createQuery("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND o.sueldo BETWEEN :minSueldo AND :maxSueldo  AND LOWER(o.perfil) LIKE LOWER(:perfil)  AND o.localizacion = :localizacion", Oferta.class);
         q.setParameter("puesto", puesto);
         q.setParameter("tipo_contrato", tipo_contrato);
-        q.setParameter("sueldo", sueldo);
+        q.setParameter("minSueldo", minSueldo);
+        q.setParameter("maxSueldo", maxSueldo);
         q.setParameter("perfil", perfil);
         q.setParameter("localizacion", localizacion);
         return q;

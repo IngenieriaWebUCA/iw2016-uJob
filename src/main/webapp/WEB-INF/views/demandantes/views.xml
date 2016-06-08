@@ -10,6 +10,10 @@
 <definition extends="default" name="demandantes/create">
         <put-attribute name="body" value="/WEB-INF/views/demandantes/create.jspx"/>
     </definition>
+    
+<definition extends="default" name="demandantes/mostrarOfertas">
+        <put-attribute name="body" value="/WEB-INF/views/demandantes/mostrarOfertas.jspx"/>
+    </definition>
 <definition extends="default" name="demandantes/update">
         <put-attribute name="body" value="/WEB-INF/views/demandantes/update.jspx"/>
     </definition>    

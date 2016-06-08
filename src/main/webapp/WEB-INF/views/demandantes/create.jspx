@@ -11,7 +11,6 @@
         <field:input field="telefono" id="c_es_uca_iw_ujob_domain_Demandante_telefono" max="9" min="9" required="true" z="hd+te6BbMKbYCnwdkjygZ03dpfk="/>
         <field:input field="dni" id="c_es_uca_iw_ujob_domain_Demandante_dni" max="9" min="9" required="true" z="NxvrJloJx6aketFdsDJCMwQM/2o="/>
         <field:textarea field="experiencia" id="c_es_uca_iw_ujob_domain_Demandante_experiencia" required="true" z="qbJFeDzLG+woEVKVynkX0blIuwk="/>
-        <field:select field="usuario" id="c_es_uca_iw_ujob_domain_Demandante_usuario" itemValue="dni" items="${userses}" path="/userses" z="R6l5WR+8BR5uaiD68C1ETFP5+kY="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_es_uca_iw_ujob_domain_Demandante" render="${not empty dependencies}" z="JsccXt54tB92mzi+bAe5Kibz71I="/>
 </div>

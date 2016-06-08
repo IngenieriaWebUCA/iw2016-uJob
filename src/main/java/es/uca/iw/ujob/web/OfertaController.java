@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.roo.addon.web.mvc.controller.finder.RooWebFinder;
@@ -52,7 +55,7 @@ public class OfertaController {
     }
     
 	@RequestMapping(value = "/anadirOferta")
-    public String anadirOferta(@RequestParam("oferta_puesto") String puesto, @RequestParam("oferta_tipo") String tipo, @RequestParam("oferta_fini") String f_ini, @RequestParam("oferta_fcad") String f_cad, @RequestParam("oferta_sueldo") float sueldo, @RequestParam("oferta_nvacantes") int nvacantes, @RequestParam("oferta_estado") String estado, @RequestParam("usuario_nombre") String username,@RequestParam("oferta_perfil") String perfil, Model uiModel) throws ParseException {
+    public String anadirOferta(@RequestParam("oferta_puesto") String puesto, @RequestParam("oferta_tipo") String tipo, @RequestParam("oferta_fini") Date f_ini, @RequestParam("oferta_fcad") Date f_cad, @RequestParam("oferta_sueldo") float sueldo, @RequestParam("oferta_nvacantes") int nvacantes, @RequestParam("oferta_estado") String estado, @RequestParam("usuario_nombre") String username,@RequestParam("oferta_perfil") String perfil, Model uiModel) throws ParseException {
 		Users usuario = Users.buscarUsuarioNombre(username);
 		Oferta oferta = new Oferta();
 		// Puesto, tipo,fecha inicio, fecha caducidad, sueldo, nvacantes,estado,empresa
@@ -60,10 +63,14 @@ public class OfertaController {
         oferta.setPuesto(puesto);
         oferta.setTipo_contrato(tipo);
         oferta.setPerfil(perfil);
-        Date fechaini = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(f_ini);
-        Date fechacad = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(f_cad);
-        oferta.setFecha_inicio(fechaini);
-        oferta.setFecha_caducidad(fechacad);
+
+        /*SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+         
+        Date f_inicio=sdf.parse(f_ini);
+        Date f_cadu=sdf.parse(f_cad);*/
+		oferta.setFecha_inicio(f_ini);
+        oferta.setFecha_caducidad(f_cad);
+
         oferta.setSueldo(sueldo);
         oferta.setN_vacantes(nvacantes);
         System.out.println(estado);
@@ -93,22 +100,22 @@ public class OfertaController {
     	return "ofertas/anadirOferta";
     }
 	
-	@RequestMapping(params = { "find=ByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion", "form" }, method = RequestMethod.GET)
-    public String findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacionForm(Model uiModel) {
+	@RequestMapping(params = { "find=ByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion", "form" }, method = RequestMethod.GET)
+    public String findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacionForm(Model uiModel) {
         uiModel.addAttribute("localizacions", Localizacion.findAllLocalizacions());
-        return "ofertas/findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion";
-    }   
+        return "ofertas/findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion";
+    }
     
-	@RequestMapping(params = "find=ByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion", method = RequestMethod.GET)
-    public String findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion(@RequestParam(value = "puesto", required = false) String puesto, @RequestParam(value = "tipo_contrato", required = false) String tipo_contrato, @RequestParam(value = "sueldo", required = false) Float sueldo, @RequestParam(value = "perfil", required = false) String perfil, @RequestParam(value = "localizacion", required = false) Localizacion localizacion, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
+    @RequestMapping(params = "find=ByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion", method = RequestMethod.GET)
+    public String findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion(@RequestParam(value = "puesto", required = false) String puesto, @RequestParam(value = "tipo_contrato", required = false) String tipo_contrato, @RequestParam(value = "minSueldo", required = false) Float minSueldo, @RequestParam(value = "maxSueldo", required = false) Float maxSueldo, @RequestParam(value = "perfil", required = false) String perfil, @RequestParam(value = "localizacion", required = false) Localizacion localizacion, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
-            uiModel.addAttribute("ofertas", Oferta.findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion(puesto, tipo_contrato, sueldo, perfil, localizacion, sortFieldName, sortOrder).setFirstResult(firstResult).setMaxResults(sizeNo).getResultList());
-            float nrOfPages = (float) Oferta.countFindOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion(puesto, tipo_contrato, sueldo, perfil, localizacion) / sizeNo;
+            uiModel.addAttribute("ofertas", Oferta.findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion(puesto, tipo_contrato, minSueldo, maxSueldo, perfil, localizacion, sortFieldName, sortOrder).setFirstResult(firstResult).setMaxResults(sizeNo).getResultList());
+            float nrOfPages = (float) Oferta.countFindOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion(puesto, tipo_contrato, minSueldo, maxSueldo, perfil, localizacion) / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("ofertas", Oferta.findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion(puesto, tipo_contrato, sueldo, perfil, localizacion, sortFieldName, sortOrder).getResultList());
+            uiModel.addAttribute("ofertas", Oferta.findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion(puesto, tipo_contrato, minSueldo, maxSueldo, perfil, localizacion, sortFieldName, sortOrder).getResultList());
         }
         addDateTimeFormatPatterns(uiModel);
         return "ofertas/list";

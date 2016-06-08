@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,8 +34,8 @@ import org.springframework.roo.addon.json.RooJson;
 @RooJavaBean
 @RooToString
 @Table(name = "oferta")
-@RooJpaActiveRecord(finders = { "findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion" })
 @RooJson
+@RooJpaActiveRecord(finders = { "findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion" })
 public class Oferta implements Serializable {
 
     /**
@@ -114,11 +115,12 @@ public class Oferta implements Serializable {
     @ManyToOne
     @JoinColumn(name = "localizacion")
     private Localizacion localizacion;
-
-    public static TypedQuery<Oferta> findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion(String puesto, String tipo_contrato, Float sueldo, String perfil, Localizacion localizacion, String sortFieldName, String sortOrder) {
-        if (puesto == null || puesto.length() == 0) {
-            puesto = "%";
-        }
+    
+    public static TypedQuery<Oferta> findOfertasByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion(String puesto, String tipo_contrato, Float minSueldo, Float maxSueldo, String perfil, Localizacion localizacion, String sortFieldName, String sortOrder) {
+    
+    	if (puesto == null || puesto.length() == 0) {
+            puesto = "%"; 
+    	}
         puesto = puesto.replace('*', '%');
         if (puesto.charAt(0) != '%') {
             puesto = "%" + puesto;
@@ -126,6 +128,7 @@ public class Oferta implements Serializable {
         if (puesto.charAt(puesto.length() - 1) != '%') {
             puesto = puesto + "%";
         }
+        
         if (tipo_contrato == null || tipo_contrato.length() == 0) {
             tipo_contrato = "%";
         }
@@ -136,6 +139,7 @@ public class Oferta implements Serializable {
         if (tipo_contrato.charAt(tipo_contrato.length() - 1) != '%') {
             tipo_contrato = tipo_contrato + "%";
         }
+        
         if (perfil == null || perfil.length() == 0) {
             perfil = "%";
         }
@@ -146,19 +150,45 @@ public class Oferta implements Serializable {
         if (perfil.charAt(perfil.length() - 1) != '%') {
             perfil = perfil + "%";
         }
+        
         StringBuilder queryBuilder;
-        if (sueldo == null && localizacion == null) {
-            queryBuilder = new StringBuilder("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND LOWER(o.perfil) LIKE LOWER(:perfil)");
-        } else {
-            if (sueldo == null && localizacion != null) {
-                queryBuilder = new StringBuilder("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND LOWER(o.perfil) LIKE LOWER(:perfil) AND o.localizacion = :localizacion");
-            } else {
-                if (sueldo != null && localizacion == null) {
-                    queryBuilder = new StringBuilder("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato) AND o.sueldo >= :sueldo  AND LOWER(o.perfil) LIKE LOWER(:perfil)");
-                } else {
-                    queryBuilder = new StringBuilder("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND o.sueldo >= :sueldo  AND LOWER(o.perfil) LIKE LOWER(:perfil)  AND o.localizacion = :localizacion");
-                }
-            }
+        
+        if(minSueldo == null && maxSueldo == null && localizacion == null){
+        	queryBuilder = new StringBuilder("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato) AND LOWER(o.perfil) LIKE LOWER(:perfil)");
+        
+        }else{
+        	if(minSueldo != null && maxSueldo == null && localizacion == null){
+            	queryBuilder = new StringBuilder("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND o.sueldo >= :minSueldo AND LOWER(o.perfil) LIKE LOWER(:perfil)");
+
+        	}else{
+        		if(minSueldo == null && maxSueldo != null && localizacion == null){
+                	queryBuilder = new StringBuilder("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND o.sueldo <= :maxSueldo  AND LOWER(o.perfil) LIKE LOWER(:perfil)");
+
+        		}else{
+        			if(minSueldo == null && maxSueldo == null && localizacion != null){
+        	        	queryBuilder = new StringBuilder("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND LOWER(o.perfil) LIKE LOWER(:perfil)  AND o.localizacion = :localizacion");
+
+        			}else{
+        				if(minSueldo != null && maxSueldo != null && localizacion == null){
+        		        	queryBuilder = new StringBuilder("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND o.sueldo BETWEEN :minSueldo AND :maxSueldo  AND LOWER(o.perfil) LIKE LOWER(:perfil)");
+
+        				}else{
+        					if(minSueldo != null && maxSueldo == null && localizacion != null){
+        			        	queryBuilder = new StringBuilder("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND o.sueldo >= :minSueldo  AND LOWER(o.perfil) LIKE LOWER(:perfil)  AND o.localizacion = :localizacion");
+
+        					}else{
+        						if(minSueldo == null && maxSueldo != null && localizacion != null){
+        				        	queryBuilder = new StringBuilder("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND o.sueldo <= :maxSueldo  AND LOWER(o.perfil) LIKE LOWER(:perfil)  AND o.localizacion = :localizacion");
+
+        						}else{
+        							queryBuilder = new StringBuilder("SELECT o FROM Oferta AS o WHERE LOWER(o.puesto) LIKE LOWER(:puesto)  AND LOWER(o.tipo_contrato) LIKE LOWER(:tipo_contrato)  AND o.sueldo BETWEEN :minSueldo AND :maxSueldo  AND LOWER(o.perfil) LIKE LOWER(:perfil)  AND o.localizacion = :localizacion");
+        						}
+        						
+        					}
+        				}
+        			}
+        		}
+        	}
         }
         EntityManager em = Oferta.entityManager();
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
@@ -170,12 +200,19 @@ public class Oferta implements Serializable {
         TypedQuery<Oferta> q = em.createQuery(queryBuilder.toString(), Oferta.class);
         q.setParameter("puesto", puesto);
         q.setParameter("tipo_contrato", tipo_contrato);
-        if (sueldo != null) {
-            q.setParameter("sueldo", sueldo);
+        
+        if(minSueldo != null){
+        	q.setParameter("minSueldo", minSueldo);
         }
+
+        if(maxSueldo != null){
+        	q.setParameter("maxSueldo", maxSueldo);
+        }
+
         q.setParameter("perfil", perfil);
-        if (localizacion != null) {
-            q.setParameter("localizacion", localizacion);
+        
+        if (localizacion != null){
+        	q.setParameter("localizacion", localizacion);
         }
         return q;
     }
@@ -234,5 +271,10 @@ public class Oferta implements Serializable {
             if (other.tipo_contrato != null) return false;
         } else if (!tipo_contrato.equals(other.tipo_contrato)) return false;
         return true;
+    }
+
+    public static List<Oferta> findAllOfertasEmpresa(String cif) {
+        System.out.println("SELECT o FROM Oferta AS o WHERE o.cif_empresa LIKE ('" + cif + "')");
+        return entityManager().createQuery("SELECT o FROM Oferta AS o WHERE o.empresa.cif LIKE('" + cif + "')", Oferta.class).getResultList();
     }
 }

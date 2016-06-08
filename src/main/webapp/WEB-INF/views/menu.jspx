@@ -10,7 +10,7 @@
             </menu:category>
             <menu:category id="c_oferta" z="user-managed">
                 <menu:item id="i_oferta_list" messageCode="menu_lista_ofertas" url="/ofertas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
-                <menu:item id="fi_oferta_puestolikeandtipo_contratolikeandsueldogreaterthanequalsandperfillikeandlocalizacion" messageCode="menu_buscar_ofertas" url="/ofertas?find=ByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion&amp;form&amp;page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+                <menu:item id="fi_oferta_puestolikeandtipo_contratolikeandsueldobetweenandperfillikeandlocalizacion" messageCode="menu_buscar_ofertas" url="/ofertas?find=ByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion&amp;form&amp;page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
             </menu:category>
             <menu:category id="c_empresa" z="user-managed">
                 <menu:item id="i_empresa_list" messageCode="menu_lista_empresas" url="/empresas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
@@ -24,7 +24,7 @@
         <sec:authorize access="hasRole('Demandante')">
             <menu:category id="c_oferta" z="user-managed">
                 <menu:item id="i_oferta_list" messageCode="menu_lista_ofertas" url="/ofertas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="YFpuok8se1icruycVP1Ngny6x3c="/>
-                <menu:item id="fi_oferta_puestolikeandtipo_contratolikeandsueldogreaterthanequalsandperfillikeandlocalizacion" messageCode="menu_buscar_ofertas" url="/ofertas?find=ByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion&amp;form&amp;page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+                <menu:item id="fi_oferta_puestolikeandtipo_contratolikeandsueldobetweenandperfillikeandlocalizacion" messageCode="menu_buscar_ofertas" url="/ofertas?find=ByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion&amp;form&amp;page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
             </menu:category>
             <menu:category id="c_empresa" z="user-managed">
                 <menu:item id="i_empresa_list" messageCode="menu_lista_empresas" url="/empresas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/YQYlSdehDz3lrOGSSpWZYe++Zk="/>
@@ -49,6 +49,7 @@
                 <menu:item id="i_inscripcion_new" messageCode="menu_nueva_inscripcion" url="/inscripcions?form" z="user-managed"/>
                 <a href="/iw2016-ujob/inscripcions/mostrarInscripciones?usuario_nombre=${pageContext['request'].userPrincipal.name}">Mostrar inscripciones</a>
             </menu:category>
+       		<a href="/iw2016-ujob/demandantes/mostrarOfertas?usuario_nombre=${pageContext['request'].userPrincipal.name}">Buscar candidatos por oferta</a>
         </sec:authorize>
         <!-- Si es un gestorETT -->
         <sec:authorize access="hasRole('GestorETT')">
@@ -58,11 +59,18 @@
             </menu:category>
             <menu:category id="c_ofertas" z="user-managed">
                 <menu:item id="i_ofertas_new" messageCode="menu_nueva_oferta" url="/ofertas?form" z="user-managed"/>
-                <menu:item id="fi_oferta_puestolikeandtipo_contratolikeandsueldogreaterthanequalsandperfillikeandlocalizacion" messageCode="menu_buscar_ofertas" url="/ofertas?find=ByPuestoLikeAndTipo_contratoLikeAndSueldoGreaterThanEqualsAndPerfilLikeAndLocalizacion&amp;form&amp;page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+                <menu:item id="fi_oferta_puestolikeandtipo_contratolikeandsueldobetweenandperfillikeandlocalizacion" messageCode="menu_buscar_ofertas" url="/ofertas?find=ByPuestoLikeAndTipo_contratoLikeAndSueldoBetweenAndPerfilLikeAndLocalizacion&amp;form&amp;page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
             </menu:category>
             <menu:category id="c_empresa" z="user-managed">
                 <menu:item id="i_empresa_new" messageCode="menu_nueva_empresa" url="/empresas?form" z="user-managed"/>
             </menu:category>
+            <menu:category id="c_inscripcion" z="user-managed">
+            	<br/>
+            	<a href="/iw2016-ujob/inscripcions/mostrarInscripciones?usuario_nombre=${pageContext['request'].userPrincipal.name}">Gestionar inscripciones</a>
+            	<br/>
+            </menu:category>
+            <br/>
+            <a href="/iw2016-ujob/demandantes/mostrarOfertas?usuario_nombre=${pageContext['request'].userPrincipal.name}">Buscar candidatos por oferta</a>
         </sec:authorize>
         <!-- Si es un administrador -->
         <sec:authorize access="hasRole('Admin')">
@@ -98,9 +106,10 @@
                 <menu:item id="i_titulacion_new" messageCode="menu_nueva_titulacion" url="/titulacions?form" z="user-managed"/>
                 <menu:item id="i_titulacion_list" messageCode="menu_lista_titulacion" url="/titulacions?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
             </menu:category>
+        	<menu:category id="c_seleniumtests" z="PPLMd2yNB6/LSbjIWogAacRPU+Q=">
+            	<menu:item id="si_seleniumtests_test" messageCode="selenium_menu_test_suite" url="/resources/selenium/test-suite.xhtml" z="wwunW/IPDcunN97u41MvMJZQ2to="/>
+        	</menu:category>
         </sec:authorize>
-        <menu:category id="c_seleniumtests" z="PPLMd2yNB6/LSbjIWogAacRPU+Q=">
-            <menu:item id="si_seleniumtests_test" messageCode="selenium_menu_test_suite" url="/resources/selenium/test-suite.xhtml" z="wwunW/IPDcunN97u41MvMJZQ2to="/>
-        </menu:category>
+        
     </menu:menu>
 </div>

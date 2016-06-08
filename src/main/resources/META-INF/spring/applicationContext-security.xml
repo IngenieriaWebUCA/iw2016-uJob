@@ -11,10 +11,10 @@
        <logout logout-url="/resources/j_spring_security_logout" />
 
        <intercept-url pattern="\A/userses\?form.*\Z" access="!isAuthenticated()" />
-       <intercept-url pattern="\A/demandantes\?form.*\Z" access="hasRole('Admin')" />
+       <intercept-url pattern="\A/demandantes\?form.*\Z" access="hasAnyRole('Admin','Demandante')" />
        <intercept-url pattern="\A/ofertas\?form.*\Z" access="hasAnyRole('GestorEmpresa','Admin','GestorETT')" />
        <intercept-url pattern="\A/empresas\?form.*\Z" access="hasAnyRole('GestorETT','Admin')" />
-       <intercept-url pattern="\A/inscripcion.*\Z" access="hasAnyRole('Admin','GestorEmpresa','Demandante')" />
+       <intercept-url pattern="\A/inscripcion.*\Z" access="hasAnyRole('Admin','GestorEmpresa','Demandante','GestorETT')" />
        <intercept-url pattern="\A/titulacion.*\Z" access="hasRole('Admin')" />
        <intercept-url pattern="\A/user_rol.*\Z" access="hasRole('Admin')" />
        <intercept-url pattern="\A/localizacion.*\Z" access="hasRole('Admin')" />

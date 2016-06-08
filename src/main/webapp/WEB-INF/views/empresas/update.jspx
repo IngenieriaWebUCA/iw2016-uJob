@@ -7,6 +7,6 @@
         <field:textarea field="email" id="c_es_uca_iw_ujob_domain_Empresa_email" required="true" validationMessageCode="field_invalid_email" z="dgdr+H2g6C53GlKQRc+V43nry20="/>
         <field:input field="n_empleados" id="c_es_uca_iw_ujob_domain_Empresa_n_empleados" validationMessageCode="field_invalid_integer" z="LSplSxMdJNOvurNhiNHU4R4cUIA="/>
         <field:input field="otros" id="c_es_uca_iw_ujob_domain_Empresa_otros" z="afaNI7h7gTSs1RxodWVfs6gV60I="/>
+        <field:simple field="localizaciones" id="c_es_uca_iw_ujob_domain_Empresa_localizaciones" messageCode="entity_reference_not_managed" messageCodeAttribute="Localizacion" z="cqgSPRDlLI1+YQqmhyXKHNit558="/>
     </form:update>
 </div>
-

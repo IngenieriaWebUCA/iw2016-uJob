@@ -8,7 +8,7 @@
         <field:input field="n_empleados" id="c_es_uca_iw_ujob_domain_Empresa_n_empleados" validationMessageCode="field_invalid_integer" z="LSplSxMdJNOvurNhiNHU4R4cUIA="/>
         <field:input field="otros" id="c_es_uca_iw_ujob_domain_Empresa_otros" z="afaNI7h7gTSs1RxodWVfs6gV60I="/>
         <field:input field="cif" id="c_es_uca_iw_ujob_domain_Empresa_cif" max="9" min="9" required="true" z="CBzoyVj6L5PZhPDpUytihWJYX0Q="/>
+        <field:simple field="localizaciones" id="c_es_uca_iw_ujob_domain_Empresa_localizaciones" messageCode="entity_reference_not_managed" messageCodeAttribute="Localizacion" z="cqgSPRDlLI1+YQqmhyXKHNit558="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_es_uca_iw_ujob_domain_Empresa" render="${not empty dependencies}" z="yxix7vCAmUQRlw6DgZOc+pyGvbw="/>
 </div>
-

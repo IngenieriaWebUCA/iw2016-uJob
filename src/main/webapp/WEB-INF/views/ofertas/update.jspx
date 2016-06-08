@@ -13,5 +13,6 @@
         <field:select field="estado" id="c_es_uca_iw_ujob_domain_Oferta_estado" items="${estadoofertas}" path="estadoofertas" required="true" z="hmHjXyh/2XKrqusLYxQ/N2b/kQg="/>
         <field:select field="empresa" id="c_es_uca_iw_ujob_domain_Oferta_empresa" itemValue="cif" items="${empresas}" path="/empresas" z="ogEHfTcRXxGHj9uHV4ccNbMes/A="/>
         <field:select field="localizacion" id="c_es_uca_iw_ujob_domain_Oferta_localizacion" itemValue="id" items="${localizacions}" path="/localizacions" z="A/8b7saPJyv2YNG1dz6E644L/hI="/>
+        <field:simple field="inscripciones" id="c_es_uca_iw_ujob_domain_Oferta_inscripciones" messageCode="entity_reference_not_managed" messageCodeAttribute="Inscripcion" z="TF/gYZtXQZ1wZU7sQ3b3RRWmvU0="/>
     </form:update>
 </div>
